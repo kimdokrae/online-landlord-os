@@ -1,0 +1,9 @@
+/** Only UI progress. Never financial data, identity changes, or execution permissions. */
+export const onboardingKey='online-landlord-os:local-template:welcome:v1';
+export const localWorkspaceKeys={assets:'online-landlord-os:local-template:v1:assets',settings:'online-landlord-os:local-template:v1:settings',discovery:'online-landlord-os:local-template:v1:discovery',dashboard:'online-landlord-os:local-template:v1:dashboard',operations:'online-landlord-os:local-template:operations:v1'};
+export const priorWorkspaceKeys=[...Object.values(localWorkspaceKeys),'online-landlord-os:demo:v1','online-landlord-os:office-settings:v1','online-landlord-os:automation-discovery:v1'];
+export type WelcomeState={version:1;status:'pending'|'completed';choice:null|'demo'|'company';step:0|1|2|3|4};
+export const newWelcome=():WelcomeState=>({version:1,status:'pending',choice:null,step:0});
+export function validateWelcome(value:unknown):WelcomeState{const v=value as WelcomeState;if(!v||Object.keys(v).sort().join()!==['version','status','choice','step'].sort().join()||v.version!==1||!['pending','completed'].includes(v.status)||![null,'demo','company'].includes(v.choice)||![0,1,2,3,4].includes(v.step)||v.choice!=='company'&&v.step!==0||v.status==='completed'&&v.choice===null)throw Error('시작 안내 저장 형식이 다릅니다. 기존 원본은 유지합니다.');return structuredClone(v);}
+export function inspectWelcome(storage:Pick<Storage,'getItem'>){const raw=storage.getItem(onboardingKey);if(raw!==null){const progress=validateWelcome(JSON.parse(raw));const configured=progress.choice===null&&[localWorkspaceKeys.settings,localWorkspaceKeys.operations,localWorkspaceKeys.discovery,localWorkspaceKeys.dashboard].some(key=>storage.getItem(key)!==null);return {progress,existing:configured,auto:progress.status==='pending'&&!configured};}
+ const existing=priorWorkspaceKeys.some(key=>storage.getItem(key)!==null);return {progress:newWelcome(),existing,auto:!existing};}

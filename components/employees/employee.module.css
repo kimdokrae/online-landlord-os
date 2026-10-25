@@ -1,0 +1,57 @@
+.character { display: block; width: 100%; height: 100%; overflow: visible; }
+.body, .limb { fill: var(--employee-body); stroke: #344652; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.figure, .leftArm, .rightArm, .leftLeg, .rightLeg, .antenna, .face { transform-box: fill-box; transform-origin: center bottom; }
+.leftArm, .rightArm { transform-origin: center top; }
+.statusMark { display: none; }
+.character[data-activity="IDLE"] .figure { animation: breathe 3.4s ease-in-out infinite; }
+.character[data-activity="WALKING"] .figure { animation: step .55s ease-in-out infinite; }
+.character[data-activity="WALKING"] .leftLeg, .character[data-activity="WALKING"] .rightArm { animation: swing .55s ease-in-out infinite alternate; }
+.character[data-activity="WALKING"] .rightLeg, .character[data-activity="WALKING"] .leftArm { animation: swing .55s ease-in-out infinite alternate-reverse; }
+.character[data-activity="WALKING"][data-facing="left"] .face { transform: translateX(-2px); }
+.character[data-activity="WORKING"] .figure { transform: translateY(5px); }
+.character[data-activity="WORKING"] .leftArm { animation: typing .5s ease-in-out infinite alternate; }
+.character[data-activity="WORKING"] .rightArm { animation: typing .5s ease-in-out infinite alternate-reverse; }
+.character[data-activity="MEETING"] .rightArm { animation: wave 1.8s ease-in-out infinite; }
+.character[data-activity="REPORTING"] .rightArm { transform: rotate(-20deg); }
+.character[data-activity="ERROR"] .figure { animation: error 2s ease-in-out infinite; }
+.character[data-activity="REPORTING"] .statusMark, .character[data-activity="MEETING"] .statusMark, .character[data-activity="ERROR"] .statusMark, .character[data-activity="WAITING_APPROVAL"] .statusMark { display: block; }
+.character[data-activity="WAITING_APPROVAL"] .statusMark { animation: breathe 3s ease-in-out infinite; }
+.character[data-activity="ERROR"] .statusMark circle { stroke: #cf9c8b; fill: #fae8de; }
+.inspector { position: relative; padding: 22px; border: 1px solid #dedecb; border-radius: 17px; background: #fffdf1f7; color: #5d7163; box-shadow: 0 10px 35px #60705c15; font-size: 12px; }
+.inspectorHeader { display: flex; gap: 17px; align-items: center; }
+.inspectorHeader > svg { width: 40px; height: 88px; flex-shrink: 0; }
+.inspector h3 { margin: 5px 0; font-size: 20px; }
+.inspectorHeader p { margin: 0; font-size: 11px; color: #92a08b; }
+.demo { color: #90a17e; font-size: 8px; letter-spacing: 1px; }
+.notice { font-size: 10px; color: #95a087; line-height: 1.8; padding: 12px; border: 1px solid #e7e8d8; border-radius: 8px; background: #f6f6e9; margin: 15px 0; }
+.facts { margin: 15px 0; font-size: 10px; }
+.facts > div { display: flex; gap: 10px; justify-content: space-between; margin: 7px 0; }
+.facts dt { color: #9da68f; white-space: nowrap; }
+.facts dd { margin: 0; text-align: right; font-size: 9px; }
+.inspector label { display: block; font-size: 10px; color: #859578; margin-top: 12px; }
+.inspector select { font-size: 11px; margin-top: 5px; background: #fffef7; min-height: 42px; }
+.close { position: absolute; right: 5px; top: 5px; width: 36px; height: 36px; border: 0; background: none; border-radius: 50%; color: #98a48c; font-size: 21px; }
+.close:hover { background: #f0f3e5; }
+.cityActor { position: absolute; width: 58px; height: 64px; transform: translate(-50%, -100%); border: 0; background: none; padding: 0; border-radius: 35%; pointer-events: auto; }
+.cityActor > svg { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 32px; height: 70px; pointer-events: none; }
+.cityActor > span { position: absolute; top: -21px; left: 50%; transform: translateX(-50%); font-size: 10px; white-space: nowrap; color: #617b60; background: #fff7e6ed; border: 1px solid #dedcc5; border-radius: 6px; padding: 2px 6px; }
+.cityActor:hover > span, .cityActor:focus-visible > span { background: #e5f2df; }
+.cityCard { position: absolute; z-index: 950; top: 70px; right: 18px; width: 278px; max-height: calc(100% - 145px); overflow: auto; overscroll-behavior: contain; }
+.cityCard[data-immersive="true"] { top: 105px; right: 28px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.actions button { border: 1px solid #d7dfcb; background: #f3f5e8; color: #6e835c; border-radius: 7px; font-size: 10px; min-height: 40px; padding: 8px 12px; }
+.travelNote { display: block; font-size: 9px; color: #a3a992; margin-top: 10px; }
+@keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.985) translateY(1px); } }
+@keyframes step { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+@keyframes swing { from { transform: rotate(-11deg); } to { transform: rotate(11deg); } }
+@keyframes typing { from { transform: rotate(-14deg) translateY(-1px); } to { transform: rotate(-7deg) translateY(1px); } }
+@keyframes wave { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(-26deg); } }
+@keyframes error { 0%, 75%,100% { transform: translateX(0); } 80% { transform: translateX(-2px); } 87% { transform: translateX(2px); } }
+@media (max-width: 760px) {
+  .cityCard, .cityCard[data-immersive="true"] { top: auto; bottom: 103px; left: 14px; right: 14px; width: auto; max-height: calc(100% - 188px); }
+  .cityCard .inspector { padding: 16px; }
+  .cityCard .inspectorHeader > svg { width: 27px; height: 60px; }
+  .cityCard .notice { margin: 8px 0; padding: 8px; }
+  .cityCard .facts { margin: 8px 0; }
+}
+@media (prefers-reduced-motion: reduce) { .character *, .character *::after { animation: none !important; } }

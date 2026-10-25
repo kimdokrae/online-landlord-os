@@ -1,0 +1,10 @@
+.plate { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 10px; pointer-events: none; }
+.zone { position: absolute; z-index: 2; padding: 0; border: 1px solid transparent; background: transparent; border-radius: 8px; text-align: left; }
+.zone > span { position: absolute; left: 2px; top: 0; background: #fff9eeeb; color: #4f555e; font-size: clamp(7px, .7vw, 11px); padding: 4px 7px; border-radius: 5px; box-shadow: inset 3px 0 var(--zone-color); }
+.zone:hover, .zone[aria-pressed="true"], .zone:focus-visible { border-color: #fff6c1; background: #fff4c11a; box-shadow: 0 0 0 2px var(--zone-color); }
+.staff { position: absolute; z-index: 3; width: 2.9%; min-width: 16px; aspect-ratio: 100/220; transform: translate(-50%, -100%); border: 0; padding: 0; background: transparent; }
+.staff > span { position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 4px; background: #fff8e9df; color: #555966; font-size: 8px; padding: 1px 4px; white-space: nowrap; }
+.info { position: absolute; z-index: 8; top: 10px; right: 10px; width: min(260px, calc(100% - 20px)); max-height: calc(100% - 90px); overflow: auto; padding: 12px 36px 12px 14px; border-radius: 12px; border: 1px solid #e5cdbb; background: #fffbf1f5; color: #5c6261; box-shadow: 0 5px 20px #634c6a20; }
+.info button { position: absolute; top: 4px; right: 4px; width: 30px; height: 30px; background: none; border: 0; }
+.info strong { font-size: 12px; }.info p, .info small { font-size: 10px; margin: 5px 0 0; }
+@media(max-width:540px) { .zone > span { padding: 2px 4px; font-size: 7px; }.staff > span { font-size: 7px; }.info { padding: 8px 32px 8px 10px; }.info p, .info small { font-size: 9px; } }

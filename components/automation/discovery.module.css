@@ -1,0 +1,19 @@
+.lab {color:var(--ink);min-width:0}
+.notice {padding:18px 22px;background:#eef2e5;border:1px solid #d6dfc8;border-radius:16px;line-height:1.8;font-size:13px}
+.stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0}
+.tabs,.actions {display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.tabs button {padding:12px 15px;border-radius:10px;border:1px solid #d9dfce;background:#fffdf5;color:#415849;cursor:pointer}
+.tabs button[aria-selected=true] {background:#dfe9d6;border-color:#96af82}
+.panel {background:#fffdf5;border:1px solid #dfe1d0;border-radius:20px;padding:24px;min-width:0;margin:16px 0;overflow-wrap:anywhere}
+.panel h2 {font-size:20px;margin:8px 0 16px;color:#3e5849}.panel h3 {font-size:15px;margin:20px 0 10px}.panel p,.panel li {font-size:13px;line-height:1.85;white-space:pre-wrap}.panel small {font-size:11px;color:#788975}
+.field {display:flex;flex-direction:column;gap:8px;font-size:12px;margin:15px 0;min-width:0}
+.field input,.field textarea,.field select {width:100%;min-width:0;border:1px solid #ced8c5;background:#fbfbf5;color:#334c40;padding:12px;border-radius:9px;font:inherit;line-height:1.5}
+.field textarea {resize:vertical}.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible,.tabs button:focus-visible {outline:3px solid #8caa79;outline-offset:2px}
+.check {display:flex;gap:10px;align-items:center;margin:14px 0;font-size:13px}.check input {accent-color:var(--green);width:17px;height:17px}
+.grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+.cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.cards .panel {margin:12px 0}
+.tag {font-size:11px;border-radius:20px;background:#eaf0e1;padding:6px 10px;display:inline-block}
+.danger {background:#fff3ed;color:#854d45;border:1px solid #e5cdc2;border-radius:8px;padding:10px 13px;cursor:pointer}
+.storage {margin:30px 0;background:#f1f2e9;padding:22px;border-radius:18px;font-size:13px;line-height:1.8;overflow-wrap:anywhere}.storage summary,.panel summary {cursor:pointer;font-weight:600}.storage input[type=file] {max-width:100%}
+.empty {padding:40px 20px;text-align:center}.status {font-size:12px;min-height:20px;color:#45614a}.lab [role=alert] {padding:14px;border-radius:10px;background:#fff0ec;color:#8d4036;font-size:13px}.lab button:disabled {opacity:.5;cursor:wait}
+@media(max-width:760px){.stats {grid-template-columns:1fr;gap:10px}.cards,.grid {grid-template-columns:1fr}.panel {padding:18px}.tabs button {font-size:12px;padding:10px}.actions .button {white-space:normal;text-align:center}.storage {padding:16px}}

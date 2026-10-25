@@ -1,0 +1,47 @@
+{
+  "name": "online-landlord-os",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:e2e": "playwright test",
+    "dev:public": "node scripts/run-next.mjs public-demo dev",
+    "build:public": "node scripts/run-next.mjs public-demo build",
+    "start:public": "node scripts/run-next.mjs public-demo start",
+    "test:public": "playwright test -c playwright.public.config.ts",
+    "dev:local": "node scripts/run-next.mjs local-template dev",
+    "build:local": "node scripts/run-next.mjs local-template build",
+    "start:local": "node scripts/run-next.mjs local-template start",
+    "test:operations": "playwright test -c playwright.operations.config.ts",
+    "doctor": "node scripts/check-runtime.mjs",
+    "template:csv": "node --experimental-strip-types scripts/generate-template-csv.ts",
+    "test:template": "playwright test -c playwright.template.config.ts",
+    "template:audit": "node scripts/audit-dependencies.mjs",
+    "template:package": "node scripts/template-package.mjs",
+    "test:final": "playwright test -c playwright.final-audit.config.ts"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.1",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "typescript": "7.0.2"
+  }
+}

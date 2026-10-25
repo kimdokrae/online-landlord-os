@@ -1,0 +1,7 @@
+.layout[data-inside=true] {grid-template-columns:minmax(0,1fr);}
+.stack {display:grid;min-width:0;}
+.scene,.list {grid-area:1/1;min-width:0;}
+.list {align-self:start;position:relative;z-index:1;max-height:580px;overflow:auto;background:white;}
+.preview {padding:22px;background:linear-gradient(140deg,#f6e7ea,#edf1df);min-height:160px;color:#425e4d;display:flex;flex-direction:column;gap:10px;}
+.preview small {font-size:10px;letter-spacing:1px;}.preview strong {font-size:19px;}.modules {display:flex;gap:5px;}
+.modules span {width:30px;height:27px;display:grid;place-content:center;border-radius:6px;background:#fff9ed;border:1px solid #b7c8ad;font-size:11px;}.modules span[data-built=false] {opacity:.35;}
